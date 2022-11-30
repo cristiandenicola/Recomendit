@@ -1,16 +1,29 @@
 <template>
-  <header>
-    <router-link to="/">
-      <h1><span>RECO</span>MENDIT</h1>
-    </router-link>
-  </header>
-  <main>
-    <RouterView />
-  </main>
+  <Sidebar/>
+  <div :style="{ 'margin-left': sidebarWidth }">
+    <header>
+      <router-link to="/">
+        <h1><span>RECO</span>MENDIT</h1>
+      </router-link>
+    </header>
+    <main>
+      <router-view/>
+    </main>
+  </div>
 </template>
 
-<script setup>
-  import {RouterView } from "vue-router";
+<script>
+  //import { RouterView } from "vue-router"
+  import Sidebar from '@/components/sidebar/Sidebar.vue'
+  import { sidebarWidth } from '@/components/sidebar/state.js'
+
+  export default {
+  components: { Sidebar },
+  setup() {
+    return { sidebarWidth }
+  }
+}
+  
 </script>
 
 <style lang="scss">
