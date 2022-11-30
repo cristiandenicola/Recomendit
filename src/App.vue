@@ -21,11 +21,11 @@
   font-family: 'Fira Sans', sans-serif;
 
   &::selection {
-    background: transparentize($color: (#42B883), $amount: 0.5)
+    background: transparentize($color: (#E50914), $amount: 0.5)
   }
 
 body {
-  background-color: #F7ECDE;
+  background-color: #F5F5F1;
 }
 
 a {
@@ -38,15 +38,15 @@ header {
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
-  background-color: #E9DAC1;
+  background-color: #F5F5F1;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
 
   h1 {
-    color: #54BAB9;
+    color: #B81D24;
     font-size: 28px;
 
     span {
-      color: #9ED2C6;
+      color: #221F1F;
     }
   }
 }
