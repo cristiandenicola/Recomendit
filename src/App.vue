@@ -3,7 +3,7 @@
   <div :style="{ 'margin-left': sidebarWidth }">
     <header>
       <router-link to="/">
-        <h1><span>RECO</span>MENDIT</h1>
+        <h1><span>RECOMEND</span>|IT</h1>
       </router-link>
     </header>
     <main>
@@ -56,6 +56,7 @@ header {
 
   h1 {
     color: #B81D24;
+    visibility: visible;
     font-size: 28px;
 
     span {

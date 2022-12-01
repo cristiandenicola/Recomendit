@@ -1,10 +1,9 @@
 <script>
 import SidebarLink from './SidebarLink.vue'
-import image from "@/assets/logoWebApp.png"
 import {collapsed, toggleSidebar, sidebarWidth} from './state'
 export default {
     props: {},
-    components: { SidebarLink, image },
+    components: { SidebarLink },
     setup() {
         return { collapsed, toggleSidebar, sidebarWidth }
     }
@@ -79,8 +78,4 @@ export default {
     transition: 0.2s linear;
 }
 
-.image {
-    width: 100%;
-    height: 450px;
-}
 </style>
