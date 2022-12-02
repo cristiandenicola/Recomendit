@@ -1,19 +1,24 @@
 <template>
   <div class="home">
-    <!--<div id="app">
+    <main id="app">
       <section class="films">
-        <Film/>
-        <Film/>
-        <Film/>
+        <Film
+        v-for="film in films"
+        :key="film.title"
+        :film="film"
+        />
       </section>
-    </div>-->
+    </main>
   </div>
 </template>
 
 <script>
-//import Film from '@/components/Film.vue';
+import Film from '@/components/Film.vue';
+import imageAvatar from "@/assets/avatar.png";
+import imageHarry from "@/assets/harry.png";
+import imageLOTR from "@/assets/LOTR.png";
 
- /*export default {
+ export default {
     name: 'app',
     components: { 
       Film },
@@ -23,24 +28,54 @@
           {
             title: 'Avatar',
             bgtext: 'AVATAR',
-            src: require('./assets/avatar.jpg')
+            color: 'blue',
+            src: imageAvatar
           },
           {
-            title: 'Harry Potter',
-            bgtext: 'HARRY POTTER',
-            src: require('./assets/harry-potter.jpg')
+            title: 'Harry Potter and the half blood prince',
+            bgtext: 'H-P',
+            color: 'gray',
+            src: imageHarry
           },
           {
             title: 'Lord of the rings',
             bgtext: 'LOTR',
-            src: require('./assets/LOTR.jpg')
+            color: 'yellow',
+            src: imageLOTR
           }
         ],
       }
     } 
-  }*/
+  }
 </script>
 
 <style lang="scss">
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'montseratt', sans-serif;
+  }
+
+  main {
+    width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    
+    background-color: #EEE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .films {
+    display: flex;
+    max-width: 1280px;
+    padding: 25px;
+    margin: 0 auto;
+  }
 </style>
  

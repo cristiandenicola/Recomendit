@@ -31,7 +31,7 @@ export default {
             :class="{ 'rotate-180': collapsed }"
             @click="toggleSidebar"
         >
-            <i class="fas fa-angle-double-left"/>
+            <i class="fas fa-angle-double-left" id="puntatore"/>
         </span>
     </div>
 </template>
@@ -76,6 +76,10 @@ export default {
 .rotate-180 {
     transform: rotate(180deg);
     transition: 0.2s linear;
+}
+
+#puntatore{
+    cursor: pointer; 
 }
 
 </style>
