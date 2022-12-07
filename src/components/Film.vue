@@ -34,7 +34,8 @@
         position: relative;
         padding: 25px;
         box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.25);
-        perspective: 1000px;
+        perspective: 500px;
+        border-radius: 0.25em;
     }
 
     .film-inner.blue {
@@ -57,7 +58,7 @@
         bottom: 0;
         z-index: 0;
         overflow: hidden;
-        perspective: 1000px;
+        perspective: 500px;
     }
 
     .film-text-wrap h2 {
@@ -79,5 +80,4 @@
         filter: drop-shadow(0px 0px 12px rgba(0, 0, 0, 0.25));
     }
 
-    
 </style>

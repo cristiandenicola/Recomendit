@@ -1,11 +1,11 @@
 <template>
   <div class="home">
-    <main id="app">
+    <main id="app" @mousemove="mousemove">
       <section class="films">
         <Film
-        v-for="film in films"
-        :key="film.title"
-        :film="film"
+          v-for="film in films"
+          :key="film.title"
+          :film="film"
         />
       </section>
     </main>
@@ -43,7 +43,35 @@ import imageLOTR from "@/assets/LOTR.png";
             color: 'yellow',
             src: imageLOTR
           }
-        ],
+        ]
+      }
+    },
+    methods: {
+      mousemove (e) {
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+        let films = document.querySelectorAll('.films .film');
+
+        for (let i = 0; i < films.length; i++) {
+          let film = films[i];
+          let film_image = film.querySelector('.film-image-wrap');
+
+          let img_x = mouseX - this.coords(film_image).x;
+          let img_y = mouseY - this.coords(film_image).y;
+
+          film_image.style.transform = `translateY(-${img_y/40}px) translateX(-${img_x/40}px) translateZ(100px)`;
+
+          let bgtext = film.querySelector('.bg-text');
+          let bg_x = mouseX - this.coords(bgtext).x;
+          bgtext.style.transform = `translateX(${bg_x/25}px)`;
+        }
+      },
+      coords (el) {
+        let coords = el.getBoundingClientRect();
+        return {
+          x: coords.left / 2,
+          y: coords.top / 2
+        }
       }
     } 
   }
@@ -65,10 +93,11 @@ import imageLOTR from "@/assets/LOTR.png";
     min-height: 100vh;
     overflow: hidden;
     
-    background-color: #EEE;
+    background-color: #F5F5F1;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 0;
   }
 
   .films {
