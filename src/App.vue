@@ -38,7 +38,7 @@
   }
 
 body {
-  background-color: #F5F5F1;
+  background-color: #000;
 }
 
 a {
@@ -47,11 +47,12 @@ a {
 }
 
 header {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px 16px;
-  background-color: #F5F5F1;
+  background-color: #000;
   box-shadow: 0px 0px 6px rgba(0,0,0,0.1);
 
   h1 {
@@ -60,7 +61,7 @@ header {
     font-size: 28px;
 
     span {
-      color: #221F1F;
+      color: #F5F5F1;
     }
   }
 }
