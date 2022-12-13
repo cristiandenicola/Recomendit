@@ -3,11 +3,11 @@
     <div id="carousel">
       <Carousel :slides="slides"></Carousel>
     </div>
-    <div id="title-section">
-        <h1>THE<span> MOST LIKED</span> MOVIE EVER</h1>
+    <div class="title-section">
+        <h1>THE<span> MOST LIKED</span> MOVIES EVER</h1>
         <!--TODO vedere di aggiungere un separatore carino-->
     </div>
-    <main id="app" @mousemove="mousemove">
+    <main id="app" @mousemove="mousemoveFilm">
       <div class="best-of">
         <section class="films">
           <Film
@@ -18,7 +18,11 @@
         </section>
       </div>
     </main>
-    <div class="titles of the moment">
+    <div class="title-section" id="titleOTM">
+        <h1>BEST MOVIES OF<span> 2022</span></h1>
+        <!--TODO vedere di aggiungere un separatore carino-->
+    </div>
+    <div class="titles-of-the-2022" @mousemove="mousemoveFilmOTM">
         <section class="filmsOTM">
           <FilmOTM
             v-for="filmOTM in filmsOTM"
@@ -38,7 +42,10 @@ import imageAvatar from "@/assets/avatar.png";
 import imageHarry from "@/assets/harry.png";
 import imageLOTR from "@/assets/LOTR.png";
 import imageAvengers from "@/assets/Avengers.png";
-import imageOTMwednesday from "@/assets/wednesday.png";
+import imageOTMTDoctorStrange from "@/assets/DoctorStrange.png";
+import imageOTMOnepiece from "@/assets/Onepiece.png";
+import imageOTMBlackadam from "@/assets/Blackadam.png";
+import imageOTMThorLAT from "@/assets/ThorLAT.png";
 import slide1 from "@/assets/batman2slide.jpg"; 
 import slide2 from "@/assets/venom2slide.jpg"; 
 import slide3 from "@/assets/spiderslide.jpg"; 
@@ -88,38 +95,38 @@ import slide4 from "@/assets/interstellarslide.jpg";
         ],
         filmsOTM: [
           {
-            title: 'Wednesday',
-            bgtext: 'NETFLIX',
+            title: 'Doctor Strange',
+            bgtext: 'MARVEL',
             color: 'yellow',
-            src: imageOTMwednesday,
-            plot: "Former Marine Jake Sully has been recruited for a mission to the planet Pandora to recover Earth's dwindling natural resources. Unexpectedly he finds himself wanting to protect the magical world to which he feels strangely connected."
+            src: imageOTMTDoctorStrange,
+            plot: "To restore a world where everything is changing, Strange seeks help from his ally Wong, the Sorcerer Supreme, and the Avengers' most powerful Scarlet Witch, Wanda. But a terrible threat looms over humanity and the entire universe that no longer can be done by their power alone."
           },
           {
-            title: 'Harry Potter and the h.b prince',
-            bgtext: 'H-P',
+            title: 'Black adam',
+            bgtext: 'DC',
             color: 'gray',
-            src: imageHarry,
-            plot: "Lord Voldemort tightens his grip on both the Muggle and wizarding worlds, Hogwarts is no longer a safe haven. Harry suspects that dangers may even lurk within the castle, but Dumbledore is determined to prepare for the final confrontation that seems imminent."
+            src: imageOTMBlackadam,
+            plot: "Nearly 5,000 years after being bestowed with the all-powerful powers of the Egyptian gods and just as quickly imprisoned, Black Adam is freed from his earthly grave, ready to unleash his justice upon the modern world."
           },
           {
-            title: 'Lord of the rings',
-            bgtext: 'LOTR',
+            title: 'One Piece: Red',
+            bgtext: 'ANIME',
             color: 'yellow',
-            src: imageLOTR,
-            plot: "Sauron, the dark lord, has awakened and threatens to conquer Middle-earth. To stop him once and for all, Frodo Baggins must destroy the One Ring in the fires of Mount Doom. Men, Hobbits, a Wizard, an Elf and a Dwarf form a fellowship to help him on his quest."
+            src: imageOTMOnepiece,
+            plot: "The Straw Hats journey to Elegia island to see the iconic Uta in concert. But it's not all music and games as quickly chaos breaks out with the Big Mom pirates, Navy, Heart pirates, and more joining the fray. Luffy and Uta are old friends, but lives are at risk."
           },
           {
-            title: 'Avengers: End-game',
+            title: 'Thor love and thunder',
             bgtext: 'MARVEL',
             color: 'purple',
-            src: imageAvengers,
-            plot: "The Avengers have to deal with the consequences of their failure but the arrival of Captain Marvel to their aid prompts them to try a new move against Thanos. A film that bravely talks about reacting to failure and mourning and how this changes the various superheroes."
+            src: imageOTMThorLAT,
+            plot: "TThor's quest for a dimension of inner peace is interrupted by the arrival of the galactic killer Gorr the God Butcher, bent on destroying all gods. Thor will thus join forces with Valkyrie, Korg and ex-girlfriend Jane Foster who will demonstrate his uniqueness to him."
           }
         ]
       }
     },
     methods: {
-      mousemove (e) {
+      mousemoveFilm (e) {
         let mouseX = e.clientX;
         let mouseY = e.clientY;
         let films = document.querySelectorAll('.films .film');
@@ -128,17 +135,43 @@ import slide4 from "@/assets/interstellarslide.jpg";
           let film = films[i];
           let film_image = film.querySelector('.film-image-wrap');
 
-          let img_x = mouseX - this.coords(film_image).x;
-          let img_y = mouseY - this.coords(film_image).y;
+          let img_x = mouseX - this.coordsFilm(film_image).x;
+          let img_y = mouseY - this.coordsFilm(film_image).y;
 
           film_image.style.transform = `translateY(-${img_y/40}px) translateX(-${img_x/40}px) translateZ(100px)`;
 
           let bgtext = film.querySelector('.bg-text');
-          let bg_x = mouseX - this.coords(bgtext).x;
+          let bg_x = mouseX - this.coordsFilm(bgtext).x;
           bgtext.style.transform = `translateX(${bg_x/25}px)`;
         }
       },
-      coords (el) {
+      coordsFilm (el) {
+        let coords = el.getBoundingClientRect();
+        return {
+          x: coords.left / 2,
+          y: coords.top / 2
+        }
+      },
+      mousemoveFilmOTM (e) {
+        let mouseX = e.clientX;
+        let mouseY = e.clientY;
+        let filmsOTM = document.querySelectorAll('.filmsOTM .filmOTM');
+
+        for (let i = 0; i < filmsOTM.length; i++) {
+          let filmOTM = filmsOTM[i];
+          let filmOTM_image = filmOTM.querySelector('.filmOTM-image-wrap');
+
+          let img_x = mouseX - this.coordsOTM(filmOTM_image).x;
+          let img_y = mouseY - this.coordsOTM(filmOTM_image).y;
+
+          filmOTM_image.style.transform = `translateY(-${img_y/40}px) translateX(-${img_x/40}px) translateZ(100px)`;
+
+          let bgtext = filmOTM.querySelector('.bg-text');
+          let bg_x = mouseX - this.coordsOTM(bgtext).x;
+          bgtext.style.transform = `translateX(${bg_x/25}px)`;
+        }
+      },
+      coordsOTM (el) {
         let coords = el.getBoundingClientRect();
         return {
           x: coords.left / 2,
@@ -187,7 +220,13 @@ import slide4 from "@/assets/interstellarslide.jpg";
     margin: 0 auto;
   }
 
-  #title-section {
+  
+
+  #titleOTM{
+    margin-top: -100px;
+  }
+
+  .title-section {
     text-align: center;
     margin-top: 150px;
   }
