@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 var cors = require('cors');
 
 const neo4j = require('neo4j-driver');
-const driver = neo4j.driver("bolt://localhost:7687", neo4j.auth.basic("neo4j", "12345678"));
+const driver = neo4j.driver("bolt://localhost", neo4j.auth.basic("neo4j", "12345678"), { disableLosslessIntegers: true });
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -48,4 +48,8 @@ app.post("/buscarFilm", function(req, res) {
             console.log(error);
         })
         .then(() => session.close());
-});
+})
+
+app.listen(3000, function() {
+    console.log("Backend escuchando en el puerto 3000");
+})
