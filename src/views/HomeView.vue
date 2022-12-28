@@ -120,7 +120,7 @@ import slide4 from "@/assets/interstellarslide.jpg";
             bgtext: 'MARVEL',
             color: 'purple',
             src: imageOTMThorLAT,
-            plot: "TThor's quest for a dimension of inner peace is interrupted by the arrival of the galactic killer Gorr the God Butcher, bent on destroying all gods. Thor will thus join forces with Valkyrie, Korg and ex-girlfriend Jane Foster who will demonstrate his uniqueness to him."
+            plot: "Thor's quest for a dimension of inner peace is interrupted by the arrival of the galactic killer Gorr the God Butcher, bent on destroying all gods. Thor will thus join forces with Valkyrie, Korg and ex-girlfriend Jane Foster who will demonstrate his uniqueness to him."
           }
         ]
       }
